@@ -20,9 +20,7 @@
 - Build and run the app on a simulator or a real device.
 
 3. Requirements:
-
--macOS with Xcode installed.
-
--iOS 17.0 or later.
+- macOS with Xcode installed.
+- iOS 17.0 or later.
 
 
