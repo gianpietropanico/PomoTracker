@@ -1,4 +1,4 @@
-# ⏳PomoTracker⏳
+![markProgress](https://github.com/user-attachments/assets/75dbc7ec-b1d8-48de-b176-506ac6a804a2)# ⏳PomoTracker⏳
 *This is a simple iOS productivity app built with Swift and SwiftUI that helps users stay focused and track their progress using the Pomodoro Technique.* 
 
 
@@ -22,3 +22,5 @@
 3. Requirements:
 macOS with Xcode installed.
 iOS 17.0 or later.
+
+[![App Screenshot](markProgress-small.png)](markProgress.png)
