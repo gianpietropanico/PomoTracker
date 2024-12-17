@@ -21,6 +21,7 @@ struct OnboardingView: View {
                 .font(.system(size: 34))
                 .fontWeight(.bold)
                 .lineLimit(1)
+                .accessibilityLabel("Welcome to PomoTrack")
             
             // Schermata 1
             OnboardingPageView(
@@ -33,7 +34,7 @@ struct OnboardingView: View {
             OnboardingPageView(
                 imageName: "pencil.and.scribble",
                 title: "Mark your progress",
-                description: "After a day of study record your progress."
+                description: "After a day of study, record your progress."
             )
 
             // Schermata 3
@@ -46,7 +47,7 @@ struct OnboardingView: View {
             Spacer()
 
             Button(action: {
-                isPresented = false 
+                isPresented = false
             }) {
                 Text("Let's focus !")
                     .font(.custom("SFProDisplay-Regular", size: 25).italic())
@@ -58,6 +59,8 @@ struct OnboardingView: View {
                     .cornerRadius(20)
                     .padding()
             }
+            .accessibilityLabel("Let's focus! Start using PomoTrack")
+            .accessibilityHint("Dismiss the onboarding screen and go to the main app.")
         }
         .padding()
     }
@@ -77,15 +80,18 @@ struct OnboardingPageView: View {
                 .scaledToFit()
                 .frame(width: 70, height: 70)
                 .foregroundColor(color)
+                .accessibilityHidden(true) // L'immagine è decorativa, quindi nascosta per VoiceOver
 
             VStack(alignment: .leading, spacing: 10) {
                 Text(title)
                     .font(.title2)
                     .fontWeight(.bold)
+                    .accessibilityLabel(title)
 
                 Text(description)
                     .font(.body)
                     .multilineTextAlignment(.leading)
+                    .accessibilityLabel(description)
             }
         }
         .padding()
@@ -97,4 +103,3 @@ struct OnboardingView_Previews: PreviewProvider {
         OnboardingView(isPresented: .constant(true))
     }
 }
-

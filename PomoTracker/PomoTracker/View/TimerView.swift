@@ -1,7 +1,6 @@
 import SwiftUI
 import AVFoundation
 
-
 struct TimerView: View {
     @Binding var counter: Int
     @Binding var countTo: Int
@@ -26,6 +25,7 @@ struct TimerView: View {
                     .fill(Color.clear)
                     .frame(width: 300, height: 300)
                     .overlay(Circle().stroke(buttonColor, lineWidth: 4))
+                    .accessibilityHidden(true) // Nasconde elementi non necessari a VoiceOver
 
                 // Cerchio progressivo che si riempie di bianco
                 Circle()
@@ -44,17 +44,19 @@ struct TimerView: View {
                             .foregroundColor(.white)
                             .animation(.easeInOut(duration: 0.2), value: progress())
                     )
+                    .accessibilityLabel("Timer progress, \(progressPercentage())% completed") // VoiceOver per il progresso
 
                 // Testo centrale con il timer
                 Text(counterToMinutes())
                     .font(.custom("SFProDisplay-Regular", size: 60).italic())
                     .fontWeight(.black)
                     .foregroundColor(.white)
+                    .accessibilityLabel("Time remaining: \(counterToMinutes())") // VoiceOver per il timer
             }
 
             HStack(spacing: 10) {
+                // Pulsante Progress View
                 Button(action: {
-                    // Navigazione verso ProgressView
                     showProgressView.toggle()
                 }) {
                     Image(systemName: "chart.bar.fill")
@@ -65,10 +67,12 @@ struct TimerView: View {
                         .foregroundColor(textColor)
                         .cornerRadius(20)
                 }
+                .accessibilityLabel("Show progress summary") // VoiceOver per il pulsante
                 .fullScreenCover(isPresented: $showProgressView, content: {
                     ProgressView()
                 })
 
+                // Pulsante Play/Pause
                 Button(action: {
                     timerIsRunning.toggle()
                 }) {
@@ -80,7 +84,9 @@ struct TimerView: View {
                         .foregroundColor(textColor)
                         .cornerRadius(20)
                 }
+                .accessibilityLabel(timerIsRunning ? "Pause timer" : "Start timer") // VoiceOver per Play/Pause
 
+                // Pulsante Reset
                 Button(action: {
                     counter = 0
                     timerIsRunning = false
@@ -93,49 +99,53 @@ struct TimerView: View {
                         .foregroundColor(textColor)
                         .cornerRadius(20)
                 }
+                .accessibilityLabel("Reset timer to zero") // VoiceOver per Reset
             }
 
         }
         .onReceive(timer) { _ in
-                    if timerIsRunning && counter < countTo {
-                        counter += 1
-                    } else if timerIsRunning && counter >= countTo {
-                        timerIsRunning = false
-                        playSound()
-                    }
-                }
-                .onAppear {
-                    setupSound()
-                }
+            if timerIsRunning && counter < countTo {
+                counter += 1
+            } else if timerIsRunning && counter >= countTo {
+                timerIsRunning = false
+                playSound()
             }
+        }
+        .onAppear {
+            setupSound()
+        }
+    }
 
-   
     // Imposta il suono
-     func setupSound() {
-         guard let soundURL = Bundle.main.url(forResource: "alarm", withExtension: "mp3") else {
-             print("File audio non trovato.")
-             return
-         }
+    func setupSound() {
+        guard let soundURL = Bundle.main.url(forResource: "alarm", withExtension: "mp3") else {
+            print("File audio non trovato.")
+            return
+        }
 
-         do {
-             audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
-             audioPlayer?.prepareToPlay()
-         } catch {
-             print("Errore nella configurazione del player audio: \(error.localizedDescription)")
-         }
-     }
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.prepareToPlay()
+        } catch {
+            print("Errore nella configurazione del player audio: \(error.localizedDescription)")
+        }
+    }
 
-     // Riproduce il suono
-     func playSound() {
-         audioPlayer?.play()
-     }
-    
+    // Riproduce il suono
+    func playSound() {
+        audioPlayer?.play()
+    }
+
     func completed() -> Bool {
         return progress() == 1
     }
 
     func progress() -> CGFloat {
         return CGFloat(counter) / CGFloat(countTo)
+    }
+
+    func progressPercentage() -> Int {
+        return Int(progress() * 100)
     }
 
     func counterToMinutes() -> String {
@@ -145,3 +155,5 @@ struct TimerView: View {
         return "\(minutes):\(seconds < 10 ? "0" : "")\(seconds)"
     }
 }
+
+

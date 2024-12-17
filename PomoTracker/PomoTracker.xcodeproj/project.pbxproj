@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		A3187F872D10A5D900143699 /* PomoTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = PomoTracker.app; path = "/Users/gianpopan/Desktop/GP/Xcode workspace/PomoTracker-Challenge-3/PomoTracker/build/Debug-iphoneos/PomoTracker.app"; sourceTree = "<absolute>"; };
+		A3187F882D10A6E700143699 /* PomoTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PomoTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,6 +33,7 @@
 			isa = PBXGroup;
 			children = (
 				A3187F492D10A45E00143699 /* PomoTracker */,
+				A3187F882D10A6E700143699 /* PomoTracker.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,7 +59,7 @@
 			packageProductDependencies = (
 			);
 			productName = PomoTracker;
-			productReference = A3187F872D10A5D900143699 /* PomoTracker.app */;
+			productReference = A3187F882D10A6E700143699 /* PomoTracker.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

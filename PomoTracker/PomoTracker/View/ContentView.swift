@@ -26,6 +26,7 @@ struct ContentView: View {
                                 textColor: currentStyle.textColor
                             )
                         }
+                        .accessibilityLabel("Start Focus Mode") // VoiceOver per il pulsante
                         
                         Button(action: { changeMode(to: .shortBreak) }) {
                             timerButtonContent(
@@ -35,6 +36,7 @@ struct ContentView: View {
                                 textColor: currentStyle.textColor
                             )
                         }
+                        .accessibilityLabel("Start Short Break") // VoiceOver per il pulsante
                         
                         Button(action: { changeMode(to: .longBreak) }) {
                             timerButtonContent(
@@ -44,16 +46,20 @@ struct ContentView: View {
                                 textColor: currentStyle.textColor
                             )
                         }
+                        .accessibilityLabel("Start Long Break") // VoiceOver per il pulsante
                     }
-            
-                    TextField("", text: $title, prompt: Text("Enter title").foregroundStyle(Color.white.opacity(0.5))) // Nessun placeholder
-                        .font(.custom("SFProDisplay-Regular", size: 40).italic())
-                        .foregroundColor(.white) // Testo in bianco
-                        .multilineTextAlignment(.center) // Centra il testo
-                        .accentColor(.white) // Cursore in bianco
-                        .padding()
-                        .background(Color.clear) // Nessuno sfondo
                     
+                    // TextField con VoiceOver
+                    TextField("", text: $title, prompt: Text("Enter title").foregroundStyle(Color.white.opacity(0.5)))
+                        .font(.custom("SFProDisplay-Regular", size: 40).italic())
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .accentColor(.white)
+                        .padding()
+                        .background(Color.clear)
+                        .opacity(timerMode == .focus ? 1 : 0)
+                        .frame(height: 50)
+                        .accessibilityLabel("Enter a title for your session") // VoiceOver per il TextField
                     
                     // TimerView
                     TimerView(
@@ -63,6 +69,7 @@ struct ContentView: View {
                         buttonColor: currentStyle.textColor,
                         textColor: .white
                     )
+                    .accessibilityLabel("Timer, \(counterToMinutes()) remaining") // VoiceOver per il Timer
                     
                     NavigationLink {
                         MarkProgressView()
@@ -74,14 +81,14 @@ struct ContentView: View {
                             .background(currentStyle.textColor)
                             .cornerRadius(10)
                     }
+                    .accessibilityLabel("Navigate to Progress Marking Screen") // VoiceOver per il NavigationLink
                 }
             }
         }
         .sheet(isPresented: $showOnboarding) {
-            OnboardingView(isPresented: $showOnboarding) // Mostra l'Onboarding come sheet
+            OnboardingView(isPresented: $showOnboarding)
         }
         .onAppear {
-            // Salva che l'onboarding è stato visto
             if showOnboarding {
                 UserDefaults.standard.set(true, forKey: "hasSeenOnboarding")
             }
@@ -116,6 +123,12 @@ struct ContentView: View {
         .frame(width: 120, height: 80)
         .background(isActive ? .white : textColor)
         .cornerRadius(10)
+    }
+    
+    func counterToMinutes() -> String {
+        let minutes = counter / 60
+        let seconds = counter % 60
+        return "\(minutes):\(seconds < 10 ? "0" : "")\(seconds)"
     }
 }
 

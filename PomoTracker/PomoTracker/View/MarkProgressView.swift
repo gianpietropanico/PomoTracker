@@ -22,7 +22,10 @@ struct MarkProgressView: View {
             Form {
                 Section(header: Text("Details")) {
                     TextField("Topic name", text: $topic)
+                        .accessibilityLabel("Enter the topic name")
+                    
                     TextField("Time spent (1h 30min)", text: $timeSpent)
+                        .accessibilityLabel("Enter the time spent in hours and minutes")
                 }
 
                 Section(header: Text("Questions")) {
@@ -34,6 +37,7 @@ struct MarkProgressView: View {
                                 .lineLimit(nil)
                                 .fixedSize(horizontal: false, vertical: true)
                                 .layoutPriority(1)
+                                .accessibilityLabel("Question \(index + 1): \(questions[index].text)")
                             
                             Spacer()
                             
@@ -55,6 +59,8 @@ struct MarkProgressView: View {
                                                     questions[index].answer = value
                                                 }
                                             }
+                                            .accessibilityLabel("Rate \(value) out of 4 for question \(index + 1)")
+                                            .accessibilityHint(questions[index].answer == value ? "Selected" : "Not selected")
                                     }
                                 }
                             } else {
@@ -68,6 +74,7 @@ struct MarkProgressView: View {
                                         .resizable()
                                         .frame(width: 30, height: 30)
                                         .foregroundColor(color)
+                                        .accessibilityLabel("Show rating options for question \(index + 1)")
                                 }
                             }
                         }
@@ -92,6 +99,7 @@ struct MarkProgressView: View {
                     .shadow(color: Color.black.opacity(0.2), radius: 5, x: 0, y: 5)
             }
             .padding(.horizontal)
+            .accessibilityLabel("Save the session")
         }
     }
     
