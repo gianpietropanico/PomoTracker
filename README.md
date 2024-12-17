@@ -11,6 +11,8 @@
 - *Progress Tracking: Record your study details and rate your sessions.*
 - *Analytics: View your session statistics and overall scores to boost productivity.*
 
+![App Screenshot](markProgress.PNG)
+
 ## Installation 💻
 
 1. Clone this repository: `git clone <https://github.com/gianpietropanico/PomoTracker-Challenge-3.git`>
