@@ -23,4 +23,4 @@
 macOS with Xcode installed.
 iOS 17.0 or later.
 
-[![App Screenshot](markProgress-small.png)](markProgress.png)
+[![App Screenshot](markProgress-small.PNG)](markProgress.PNG)
