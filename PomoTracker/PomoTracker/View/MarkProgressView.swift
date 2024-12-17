@@ -5,6 +5,7 @@ struct MarkProgressView: View {
     let color = Color(UIColor(red: 238 / 255, green: 103 / 255, blue: 103 / 255, alpha: 1.0))
     @State private var topic: String = ""
     @State private var timeSpent: String = ""
+    @Environment(\.dismiss) var dismiss // Per tornare indietro
     
     @State private var questions: [Question] = [
         Question(text: "How focused did you feel during this session?", answer: nil),
@@ -121,6 +122,7 @@ struct MarkProgressView: View {
 
     func saveSession() {
         print("Overall Score: \(calculateOverallScore())")
+        dismiss()
     }
 }
 
