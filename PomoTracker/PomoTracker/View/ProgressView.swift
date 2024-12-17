@@ -29,11 +29,11 @@ struct ProgressView: View {
                     VStack(spacing: 12) {
                         CardView(date: "Monday, november 11, 2024",
                                  details: [
-                                    ("Story", "2h 30 min", "3.7 / 4"),
-                                    ("Geografy", "1h 30 min", "4 / 4")
+                                    ("History", "2h 30min", "3.7 / 4"),
+                                    ("Geografy", "1h 30min", "4 / 4")
                                  ])
                         
-                        CardView(date: "Friday, november 29, 2024", details: [])
+                        CardView(date: "Friday, november 29, 2024", details: [ ("Swift", "3h 30min", "4 / 4")])
                         CardView(date: "Sunday, december 15, 2024", details: [])
                     }
                 }
@@ -99,14 +99,15 @@ struct CardView: View {
                             
                             // Nome della materia
                             Text(detail.subject)
-                                .font(.title3) // Testo materia più grande
+                                .font(.custom("SFProDisplay-Regular", size: 22).italic())
                                 .bold()
                             
                             Spacer()
                             
                             // Durata
                             Text(detail.duration)
-                                .font(.title3) // Testo durata più grande
+                                .font(.custom("SFProDisplay-Regular", size: 20).italic())
+                                .lineLimit(1)
                             
                             // Punteggio
                             Text(detail.score)
