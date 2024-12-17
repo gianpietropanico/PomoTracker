@@ -21,7 +21,6 @@
 
 3. Requirements:
 -macOS with Xcode installed.
-
 -iOS 17.0 or later.
 
 
