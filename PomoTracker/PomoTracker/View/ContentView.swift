@@ -41,7 +41,7 @@ struct ContentView: View {
                         Button(action: { changeMode(to: .longBreak) }) {
                             timerButtonContent(
                                 text: "Long Break",
-                                imageName: "cup.and.saucer.fill",
+                                imageName: "fork.knife",
                                 isActive: timerMode == .longBreak,
                                 textColor: currentStyle.textColor
                             )

@@ -18,7 +18,7 @@ struct ProgressView: View {
                     .accessibilityLabel("Your progress screen")
                 
                 ScrollView {
-                    Image("charts")
+                    Image("chartss")
                         .resizable()
                         .scaledToFit()
                         .frame(maxWidth: .infinity, maxHeight: 350)
@@ -29,14 +29,14 @@ struct ProgressView: View {
                         .accessibilityLabel("A bar chart showing your progress")
                     
                     VStack(spacing: 12) {
-                        CardView(date: "Sunday, December 15, 2024",
+                        CardView(date: "Saturday, December 14, 2024",
                                  details: [
-                                    ("History", "2h 30min", "3.7/ 4"),
+                                    ("History", "2h 30min", "3/ 4"),
                                     ("Math", "1h 30min", "4/ 4")
                                  ])
                         
-                        CardView(date: "Friday, November 29, 2024", details: [("Swift", "3h 20min", "3.3/4")])
-                        CardView(date: "Monday, November 11, 2024", details: [])
+                        CardView(date: "Monday, December 16, 2024", details: [("Swift", "3h 20min", "3.3/4")])
+                        CardView(date: "Thursday, December 19, 2024", details: [ ("Physics", "2h 30min", "2.2/ 4")])
                     }
                 }
                 Spacer()
@@ -81,9 +81,10 @@ struct CardView: View {
             }) {
                 HStack {
                     Text(date)
-                        .font(.system(size: 23))
+                        .font(.system(size: 20))
                         .bold()
                         .foregroundColor(colorScheme == .dark ? .white : .black) // Colore dinamico
+                        .lineLimit(1)
                     
                     Spacer()
                     
@@ -107,7 +108,7 @@ struct CardView: View {
                                 .accessibilityHidden(true)
                             
                             Text(detail.subject)
-                                .font(.custom("SFProDisplay-Regular", size: 22))
+                                .font(.custom("SFProDisplay-Regular", size: 20))
                                 .bold()
                                 .foregroundColor(colorScheme == .dark ? .white : .black) // Colore dinamico
                                 .accessibilityLabel("Subject: \(detail.subject)")
@@ -115,7 +116,7 @@ struct CardView: View {
                             Spacer()
                             
                             Text(detail.duration)
-                                .font(.custom("SFProDisplay-Regular", size: 20).italic())
+                                .font(.custom("SFProDisplay-Regular", size: 18).italic())
                                 .foregroundColor(colorScheme == .dark ? .white : .black) // Colore dinamico
                                 .accessibilityLabel("Duration: \(detail.duration)")
                             

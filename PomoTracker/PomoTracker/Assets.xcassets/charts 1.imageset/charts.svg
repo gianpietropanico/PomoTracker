@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="339px" height="315px" viewBox="0 0 339 315" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 3</title>
+    <g id="mock-up" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3">
+            <rect id="Rectangle" fill="#FFFFFF" x="0" y="0" width="339" height="315"></rect>
+            <text id="Date" font-family="SFPro-Bold, SF Pro" font-size="18" font-weight="bold" fill="#999999">
+                <tspan x="138.5" y="304">Date</tspan>
+            </text>
+            <text id="14/12" font-family="SFPro-Bold, SF Pro" font-size="18" font-weight="bold" fill="#757575">
+                <tspan x="59.5" y="281">14/12</tspan>
+            </text>
+            <text id="16/12" font-family="SFPro-Bold, SF Pro" font-size="18" font-weight="bold" fill="#757575">
+                <tspan x="162.5" y="282">16/12</tspan>
+            </text>
+            <text id="19/12" font-family="SFPro-Bold, SF Pro" font-size="18" font-weight="bold" fill="#757575">
+                <tspan x="252.5" y="282">19/12</tspan>
+            </text>
+            <path d="M25,264 C197.801455,264 289.735274,264 300.801455,264 C311.867637,264 322.933818,264 334,264 L334,265 L25,265 L25,264 Z" id="Rectangle" fill="#757575"></path>
+            <text id="0" font-family="SFPro-Bold, SF Pro" font-size="16" font-weight="bold" fill="#999999">
+                <tspan x="5" y="270">0</tspan>
+            </text>
+            <path d="M25,218 C197.801455,218 289.735274,218 300.801455,218 C311.867637,218 322.933818,218 334,218 L334,219 L25,219 L25,218 Z" id="Rectangle" fill="#CFCFCF"></path>
+            <text id="1" font-family="SFPro-Bold, SF Pro" font-size="16" font-weight="bold" fill="#999999">
+                <tspan x="5" y="224">1</tspan>
+            </text>
+            <path d="M25,163 C197.801455,163 289.735274,163 300.801455,163 C311.867637,163 322.933818,163 334,163 L334,164 L25,164 L25,163 Z" id="Rectangle" fill="#CFCFCF"></path>
+            <text id="2" font-family="SFPro-Bold, SF Pro" font-size="16" font-weight="bold" fill="#999999">
+                <tspan x="5" y="168">2</tspan>
+            </text>
+            <path d="M25,99 C197.801455,99 289.735274,99 300.801455,99 C311.867637,99 322.933818,99 334,99 L334,100 L25,100 L25,99 Z" id="Rectangle" fill="#CFCFCF"></path>
+            <text id="3" font-family="SFPro-Bold, SF Pro" font-size="16" font-weight="bold" fill="#999999">
+                <tspan x="5" y="104">3</tspan>
+            </text>
+            <path d="M25,35 C197.801455,35 289.735274,35 300.801455,35 C311.867637,35 322.933818,35 334,35 L334,36 L25,36 L25,35 Z" id="Rectangle" fill="#CFCFCF"></path>
+            <text id="4" font-family="SFPro-Bold, SF Pro" font-size="16" font-weight="bold" fill="#999999">
+                <tspan x="5" y="41">4</tspan>
+            </text>
+            <path d="M91,34 L127,34 C130.313708,34 133,36.6862915 133,40 L133,264 L133,264 L85,264 L85,40 C85,36.6862915 87.6862915,34 91,34 Z" id="Rectangle" fill="#BA4949"></path>
+            <path d="M176,87 L212,87 C215.313708,87 218,89.6862915 218,93 L218,264 L218,264 L170,264 L170,93 C170,89.6862915 172.686292,87 176,87 Z" id="Rectangle" fill="#BA4949"></path>
+            <path d="M261,149 L297,149 C300.313708,149 303,151.686292 303,155 L303,264 L303,264 L255,264 L255,155 C255,151.686292 257.686292,149 261,149 Z" id="Rectangle" fill="#BA4949"></path>
+            <path d="M39,99 L75,99 C78.3137085,99 81,101.686292 81,105 L81,264 L81,264 L33,264 L33,105 C33,101.686292 35.6862915,99 39,99 Z" id="Rectangle" fill="#BA4949"></path>
+        </g>
+    </g>
+</svg>
