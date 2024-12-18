@@ -3,6 +3,7 @@ import SwiftUI
 struct ProgressView: View {
     
     @Environment(\.presentationMode) var mode
+    @Environment(\.colorScheme) var colorScheme // Per rilevare la modalità chiaro/scuro
     
     var body: some View {
         NavigationStack {
@@ -13,58 +14,63 @@ struct ProgressView: View {
                     .font(.largeTitle)
                     .bold()
                     .padding(.horizontal)
+                    .foregroundColor(colorScheme == .dark ? .white : .black) // Colore dinamico
+                    .accessibilityLabel("Your progress screen")
                 
-                
-                Image("charts")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity, maxHeight: 350) // Dimensione più grande
-                    .padding()
-                    .background(Color.white.opacity(0.2))
-                    .cornerRadius(10)
-                    .padding(.horizontal)
-                
-                ScrollView{
-                    // Card Section
+                ScrollView {
+                    Image("charts")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity, maxHeight: 350)
+                        .padding()
+                        .background(colorScheme == .dark ? Color.gray.opacity(0.1) : Color.white.opacity(0.2)) // Sfondo dinamico
+                        .cornerRadius(10)
+                        .padding(.horizontal)
+                        .accessibilityLabel("A bar chart showing your progress")
+                    
                     VStack(spacing: 12) {
-                        CardView(date: "Monday, november 11, 2024",
+                        CardView(date: "Sunday, December 15, 2024",
                                  details: [
-                                    ("History", "2h 30min", "3.7 / 4"),
-                                    ("Geografy", "1h 30min", "4 / 4")
+                                    ("History", "2h 30min", "3.7/ 4"),
+                                    ("Math", "1h 30min", "4/ 4")
                                  ])
                         
-                        CardView(date: "Friday, november 29, 2024", details: [ ("Swift", "3h 30min", "4 / 4")])
-                        CardView(date: "Sunday, december 15, 2024", details: [])
+                        CardView(date: "Friday, November 29, 2024", details: [("Swift", "3h 20min", "3.3/4")])
+                        CardView(date: "Monday, November 11, 2024", details: [])
                     }
                 }
                 Spacer()
             }
             .toolbar {
-                                      ToolbarItem(placement: .topBarLeading) {
-                                          Button {
-                                              mode.wrappedValue.dismiss()
-                                          } label: {
-                                              ZStack{
-                                                  Circle()
-                                                      .fill(Color.gray.opacity(0.3))
-                                                      .frame(width: 40, height: 40)
-                                                  Image(systemName: "xmark")
-                                                      .bold()
-                                                      .foregroundStyle(.white)
-                                                      .font(.subheadline)
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        mode.wrappedValue.dismiss()
+                    } label: {
+                        ZStack {
+                            Circle()
+                                .fill(Color.gray.opacity(0.3))
+                                .frame(width: 40, height: 40)
+                            Image(systemName: "xmark")
+                                .bold()
+                                .foregroundStyle(colorScheme == .dark ? Color.black : Color.white) // Colore dinamico
+                                .font(.subheadline)
                         }
+                        .accessibilityLabel("Close Progress View")
                     }
                 }
             }
+            .background(colorScheme == .dark ? Color.black : Color.white) // Sfondo dinamico
         }
     }
 }
+
 
 struct CardView: View {
     let date: String
     let details: [(subject: String, duration: String, score: String)]
     
     @State private var isExpanded: Bool = false
+    @Environment(\.colorScheme) var colorScheme // Per rilevare la modalità chiaro/scuro
     
     var body: some View {
         VStack {
@@ -75,49 +81,54 @@ struct CardView: View {
             }) {
                 HStack {
                     Text(date)
-                        .font(.system(size: 23)) // Testo della data ancora più grande
+                        .font(.system(size: 23))
                         .bold()
-                        .foregroundColor(.black)
+                        .foregroundColor(colorScheme == .dark ? .white : .black) // Colore dinamico
                     
                     Spacer()
                     
                     Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                         .font(.title)
                         .foregroundColor(.gray)
+                        .accessibilityLabel(isExpanded ? "Collapse details" : "Expand details")
                 }
                 .padding()
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("Session on \(date), tap to \(isExpanded ? "collapse" : "expand") details")
             
             if isExpanded && !details.isEmpty {
-                VStack(alignment: .leading, spacing: 20) { // Più spazio tra i dettagli
+                VStack(alignment: .leading, spacing: 20) {
                     ForEach(details, id: \.subject) { detail in
-                        HStack(spacing: 12) { // Più spazio orizzontale
-                            // Pallino fisso
+                        HStack(spacing: 12) {
                             Circle()
-                                .fill(Color.black)
-                                .frame(width: 12, height: 12) // Pallino più grande
+                                .fill(colorScheme == .dark ? .white : .black) // Pallino dinamico
+                                .frame(width: 12, height: 12)
+                                .accessibilityHidden(true)
                             
-                            // Nome della materia
                             Text(detail.subject)
-                                .font(.custom("SFProDisplay-Regular", size: 22).italic())
+                                .font(.custom("SFProDisplay-Regular", size: 22))
                                 .bold()
+                                .foregroundColor(colorScheme == .dark ? .white : .black) // Colore dinamico
+                                .accessibilityLabel("Subject: \(detail.subject)")
                             
                             Spacer()
                             
-                            // Durata
                             Text(detail.duration)
                                 .font(.custom("SFProDisplay-Regular", size: 20).italic())
-                                .lineLimit(1)
+                                .foregroundColor(colorScheme == .dark ? .white : .black) // Colore dinamico
+                                .accessibilityLabel("Duration: \(detail.duration)")
                             
-                            // Punteggio
                             Text(detail.score)
-                                .font(.title3) // Testo punteggio più grande
+                                .font(.title3)
                                 .bold()
+                                .foregroundColor(colorScheme == .dark ? .white : .black) // Colore dinamico
+                                .accessibilityLabel("Score: \(detail.score)")
                             
-                            // Emoticon stella
                             Image(systemName: "star.fill")
-                                .font(.title) // Stella più grande
+                                .font(.title)
                                 .foregroundColor(.yellow)
+                                .accessibilityHidden(true)
                         }
                     }
                 }
@@ -127,7 +138,7 @@ struct CardView: View {
         }
         .background(
             RoundedRectangle(cornerRadius: 20)
-                .fill(Color.white)
+                .fill(colorScheme == .dark ? Color.gray.opacity(0.3) : Color.white) // Sfondo dinamico
                 .shadow(color: Color.gray.opacity(0.3), radius: 10, x: 0, y: 5)
         )
         .padding(.horizontal)
