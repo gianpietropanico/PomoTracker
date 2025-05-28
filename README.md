@@ -15,14 +15,15 @@
 
 ## Installation 💻
 
-1. Clone this repository: `git clone <https://github.com/gianpietropanico/PomoTracker-Challenge-3.git`>
+1. Clone this repository:  
+   `git clone <https://github.com/gianpietropanico/PomoTracker-Challenge-3.git>`
 
 2. Open the project:
-- Open the project in Xcode.
-- Build and run the app on a simulator or a real device.
+   - Open the project in Xcode.
+   - Build and run the app on a simulator or a real device.
 
 3. Requirements:
-- macOS with Xcode installed.
-- iOS 17.0 or later.
-
-
+   - macOS with Xcode installed.
+   - iOS 17.0 or later.
+  
+   > ⚠️ **Disclaimer:** The app is still under development — some features are not yet implemented.
