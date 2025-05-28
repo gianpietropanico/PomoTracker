@@ -26,4 +26,6 @@
    - macOS with Xcode installed.
    - iOS 17.0 or later.
   
-   > ⚠️ **Disclaimer:** The app is still under development — some features are not yet implemented.
+
+
+⚠️ **Disclaimer:** The app is still under development — some features are not yet implemented.
